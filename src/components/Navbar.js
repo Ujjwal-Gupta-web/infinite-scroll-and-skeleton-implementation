@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   let location=useLocation().pathname;
@@ -22,7 +23,14 @@ const Navbar = () => {
         {
         localStorage.getItem("user")
         ?
-        <div className='mx-2 text-danger' style={{cursor:"pointer"}} onClick={()=>{localStorage.removeItem("user"); navigate("/login");}}>Logout</div>
+        <div 
+        className='mx-2 text-danger' 
+        style={{cursor:"pointer"}} 
+        onClick={()=>{
+          localStorage.removeItem("user"); 
+          toast.success("Logout Success");
+          navigate("/login");
+        }}>Logout</div>
         :
         <div style={{cursor:"pointer",fontWeight:"500"}}><Link className='text-dark text-decoration-none' to="/login">Login</Link></div>
         }
