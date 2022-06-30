@@ -1,7 +1,16 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  let location=useLocation().pathname;
+
+  if(location==="/"){
+    document.title="Home | AppName";
+  }
+  else if(location==="/login"){
+    document.title="Login | AppName";
+  }
+
   let navigate=useNavigate();
   document.body.style.background="#eaeded";
   
